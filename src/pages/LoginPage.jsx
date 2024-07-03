@@ -6,24 +6,24 @@ import './page.css';
 
 const LoginPage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-deepDark">
-      <div className="container grid items-center gap-8 lg:grid-cols-2">
+    <div className="flex flex-col sm:flex-row md:gap-[50x] gap-10 min-h-screen items-center justify-center bg-deepDark">
+      <div className="grid items-center gap-10 grid-cols-1">
         <div>
           <img
-            className="mb-12 max-w-[500px]"
+            className="mb-12 min-w-[250px]"
             src={ LoginImage }
             alt="auth_illustration"
           />
-          <div className="text-left">
+        </div>
+          <div className="text-left w-full">
             <h1 className="mb-3 text-4xl font-bold lg:text-[40px] ">Facehook</h1>
-            <p className="max-w-[452px] text-gray-600/95 lg:text-lg">
+            <p className="text-gray-600/95 lg:text-lg w-full">
               Create a social media app with features like, showing the post,
               post details, reactions, comments and profile.
             </p>
           </div>
-        </div>
       </div>
-      <div className="card w-full">
+      <div className="card md:w-[85%] w-full">
         {/* login form */ }
       
         {/* after the log in form */ }
