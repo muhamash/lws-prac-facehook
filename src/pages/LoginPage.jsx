@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import LoginImage from '../assets/images/auth_illustration.png';
+import LoginForm from '../components/Input/LoginForm';
 import './page.css';
 
 const LoginPage = () => {
@@ -25,7 +26,7 @@ const LoginPage = () => {
       </div>
       <div className="card md:w-[85%] w-full">
         {/* login form */ }
-      
+        <LoginForm/>
         {/* after the log in form */ }
         <div className="py-4">
           <p className="text-center text-xs text-gray-600/95 lg:text-sm">
