@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import axios from "axios";
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -13,16 +14,45 @@ export default function LoginForm ()
         register,
         handleSubmit,
         formState: { errors },
-
+        setError,
     } = useForm();
     
-    const submitForm = ( formData ) =>
+    const submitForm = async ( formData ) =>
     {
+        console.log(formData)
 
-        const user = { ...formData }
-        console.log(user)
-        setAuth({user} );
-        navigate('/')
+        try
+        {
+            const response = await axios.post( `http://localhost:3000/auth/login`, formData );
+
+            console.log( response );
+        
+            if ( response.status === 200 )
+            {
+                const { token, user } = response.data;
+                if ( token )
+                {
+                    const authToken = token.token;
+                    const refreshToken = token.refreshToken;
+
+                    console.log( "login tokens", authToken, refreshToken )
+                    // const user = { ...formData }
+                    
+                    setAuth( { user, authToken, refreshToken } );
+                    console.log( "logged user", user )
+                    navigate( '/' );
+                    
+                }
+            }
+        }
+        catch ( error )
+        {
+            console.error( error );
+            setError( "root.random", {
+                type: "random",
+                message: `user ${formData.email} not found!`
+            } );
+        }
     };
 
     return (
@@ -52,7 +82,7 @@ export default function LoginForm ()
                 />
             </Field>
             {
-                errors.root && ( <div className="text-red-500 py-3">
+                errors?.root && ( <div className="text-red-500 py-3">
                     { errors?.root?.random.message }
                 </div> )
             }

@@ -6,7 +6,7 @@ import useAuth from '../hooks/useAuth';
 const HomePage = () =>
 {
   const { auth } = useAuth();
-  console.log(auth)
+  console.log({auth})
 
   return (
     <div className="w-full">
