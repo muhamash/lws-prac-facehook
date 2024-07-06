@@ -7,11 +7,12 @@ import useAuth from '../hooks/useAuth.jsx';
 
 const useAxios = () =>
 {
-    const {auth, setAuth} = useAuth()
+    const { auth, setAuth } = useAuth();
+
     React.useEffect( () =>
     {
         // request interceptor
-        const requestIntercept = api.interceptor.request.use(
+        const requestIntercept = api.interceptors.request.use(
             ( config ) =>
             {
                 const authToken = auth?.authToken;
@@ -29,7 +30,7 @@ const useAxios = () =>
 
 
         // response interceptor
-        const responseInterceptor = api.interceptor.response.use(
+        const responseInterceptor = api.interceptors.response.use(
             ( response ) => response,
             async ( error ) =>
             {
@@ -62,8 +63,8 @@ const useAxios = () =>
 
         return () =>
         {
-            api.interceptor.request.eject( requestIntercept );
-            api.interceptor.response.eject( responseInterceptor );
+            api.interceptors.request.eject( requestIntercept );
+            api.interceptors.response.eject( responseInterceptor );
         }
     }, [auth.authToken] );
 
