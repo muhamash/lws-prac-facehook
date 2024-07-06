@@ -35,7 +35,7 @@ export default function LoginForm ()
                     const authToken = token.token;
                     const refreshToken = token.refreshToken;
 
-                    console.log( "login tokens", authToken, refreshToken )
+                    // console.log( "login tokens", authToken, refreshToken )
                     // const user = { ...formData }
                     
                     setAuth( { user, authToken, refreshToken } );
