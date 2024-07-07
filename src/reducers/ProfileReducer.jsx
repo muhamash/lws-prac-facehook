@@ -22,7 +22,7 @@ const ProfileReducer = ( state, action ) =>
             }
         }
             
-        case actions.profile.PROFILE_DATA_FETCH: {
+        case actions.profile.PROFILE_DATA_FETCHED: {
             return {
                 ...state,
                 loading: false,

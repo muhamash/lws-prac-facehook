@@ -1,54 +1,70 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { actions } from '../actions';
 import useAuth from '../hooks/useAuth';
 import useAxios from '../hooks/useAxios';
+import useProfile from '../hooks/useProfile';
 
 const ProfilePage = () =>
 {
   const { api } = useAxios();
   const { auth } = useAuth();
 
-  const [ user, setUser ] = React.useState( null );
-  const [ post, setPost ] = React.useState( [] );
-  const [ loading, setLoading ] = React.useState( false );
-  const [ error, setError ] = React.useState( null );
+  const { state, dispatch } = useProfile()
+
+  // const [ user, setUser ] = React.useState( null );
+  // const [ post, setPost ] = React.useState( [] );
+  // const [ loading, setLoading ] = React.useState( false );
+  // const [ error, setError ] = React.useState( null );
 
   React.useEffect( () =>
   {
-    setLoading( true );
+    dispatch( { type: actions.profile.PROFILE_DATA_FETCHING } );
+
     const fetchProfile = async () =>
     {
       try
       {
         const response = await api.get( `http://localhost:3000/profile/${auth?.user?.id}` );
 
-        setUser( response?.data?.user );
-        setPost( response?.data?.posts );
+        // setUser( response?.data?.user );
+        console.log(response)
+        // setPost( response?.data?.posts );
+        if ( response.status === 200 )
+        {
+          
+          dispatch( {
+            type: actions.profile.PROFILE_DATA_FETCHED,
+            data: response.data,
+            // posts:response.data.posts
+           } );
+        }
       }
 
       catch ( error )
       {
         console.error( error );
-        setError( error );
+        // setError( error );
       }
 
-      finally
-      {
-        setLoading( false );
-      }
+      // finally
+      // {
+      //   setLoading( false );
+      // }
     }
 
     fetchProfile();
   }, [] );
 
-  if ( loading ) return <div>loading...</div>
+  if ( state.loading ) return <div>loading...</div>
 
   return (
     <div>
       {
-      user?.firstName
+      state?.user?.firstName
       }
+      <p>{ state.posts.length }</p>
     </div>
   );
 };
