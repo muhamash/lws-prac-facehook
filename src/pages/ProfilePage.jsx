@@ -39,7 +39,7 @@ const ProfilePage = () =>
       }
     }
 
-    fetchProfile()
+    fetchProfile();
   }, [] );
 
   if ( loading ) return <div>loading...</div>
