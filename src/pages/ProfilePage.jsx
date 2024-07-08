@@ -69,6 +69,7 @@ const ProfilePage = () =>
   return (
     <main className="mx-auto max-w-[1020px] py-8">
       <ProfileInfo />
+      
       <ProfilePost />
     </main>
   );
