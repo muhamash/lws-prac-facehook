@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { SquareLoader } from "react-spinners";
 import { actions } from '../actions';
 import useAuth from '../hooks/useAuth';
 import useAxios from '../hooks/useAxios';
@@ -57,7 +58,12 @@ const ProfilePage = () =>
     fetchProfile();
   }, [] );
 
-  if ( state.loading ) return <div>loading...</div>
+  if ( state.loading ) return <div className="py-10">
+    <SquareLoader
+      color="#ad0a8e"
+      size={100}
+    />
+  </div>
 
   return (
     <div>
