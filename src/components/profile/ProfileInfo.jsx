@@ -6,8 +6,7 @@ import ProfileImage from "./ProfileImage";
 export default function ProfileInfo ()
 {
   const { state } = useProfile();
-
-  console.log({state})
+ 
 
   return (
     <div className="flex flex-col items-center py-8 text-center">

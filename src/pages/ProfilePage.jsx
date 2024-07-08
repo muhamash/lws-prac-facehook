@@ -13,12 +13,7 @@ const ProfilePage = () =>
 {
   const { api } = useAxios();
   const { auth } = useAuth();
-  const { state, dispatch } = useProfile()
-
-  // const [ user, setUser ] = React.useState( null );
-  // const [ post, setPost ] = React.useState( [] );
-  // const [ loading, setLoading ] = React.useState( false );
-  // const [ error, setError ] = React.useState( null );
+  const { state, dispatch } = useProfile();
 
   React.useEffect( () =>
   {
@@ -29,50 +24,33 @@ const ProfilePage = () =>
       try
       {
         const response = await api.get( `http://localhost:3000/profile/${auth?.user?.id}` );
-
-        // setUser( response?.data?.user );
-        console.log(response)
-        // setPost( response?.data?.posts );
         if ( response.status === 200 )
         {
-          
           dispatch( {
             type: actions.profile.PROFILE_DATA_FETCHED,
             data: response.data,
-            // posts:response.data.posts
-           } );
+          } );
         }
-      }
-
-      catch ( error )
+      } catch ( error )
       {
         console.error( error );
-        // setError( error );
+        dispatch( { type: actions.profile.DATA_FETCH_ERROR, error: error.message } );
       }
-
-      // finally
-      // {
-      //   setLoading( false );
-      // }
-    }
+    };
 
     fetchProfile();
   }, [] );
 
   if ( state.loading ) return <div className="py-10">
-    <SquareLoader
-      color="#ad0a8e"
-      size={100}
-    />
-  </div>
+    <SquareLoader color="#ad0a8e" size={ 100 } />
+  </div>;
 
   return (
     <main className="mx-auto max-w-[1020px] py-8">
       <ProfileInfo />
-      
       <ProfilePost />
     </main>
   );
 };
 
-export default ProfilePage
+export default ProfilePage;

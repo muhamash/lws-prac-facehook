@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { PacmanLoader } from 'react-spinners';
 import { actions } from '../../actions';
 import Edit from '../../assets/icons/edit.svg';
 import useAxios from '../../hooks/useAxios';
@@ -9,6 +10,7 @@ export default function ProfileImage ()
 {
     const { state, dispatch } = useProfile();
     const { api } = useAxios();
+     const [loading, setLoading] = React.useState(false);
 
     const fileUploadRef = React.useRef();
 
@@ -23,6 +25,7 @@ export default function ProfileImage ()
 
     const updateImageDisplay = async () =>
     {
+        setLoading( true );
         try
         {
             const formData = new FormData();
@@ -37,7 +40,7 @@ export default function ProfileImage ()
             {
                 dispatch( { type: actions.profile.IMAGE_UPDATED, data: response.data } );
                 console.log( "form data", { formData } );
-                console.log(response)
+                console.log( response )
             }
             
         }
@@ -46,14 +49,20 @@ export default function ProfileImage ()
         {
             dispatch( { type: actions.profile.DATA_FETCH_ERROR, error: error.message } );
         }
+        finally
+        {
+            setLoading( false );
+        }
 
 
     };
 
+    // if ( state?.loading ) return <div>loading.......</div>
+    
     return (
         <div className="relative mb-8 max-h-[180px] max-w-[180px] rounded-full lg:mb-11 lg:max-h-[218px] lg:max-w-[218px]">
             <img
-                className="w-[150px] h-[150px] rounded-full"
+                className={ `${loading ? 'w-[150px] h-[150px] rounded-full opacity-60 blur-sm z-0' : "w-[150px] h-[150px] rounded-full z-10"}` }
                 src={ `http://localhost:3000/${state?.user?.avatar}` }
                 alt="user image"
             />
@@ -64,7 +73,13 @@ export default function ProfileImage ()
                     <img src={ Edit } alt="Edit" />
                 </button>
                 <input id="file" type="file" ref={ fileUploadRef } hidden />
+                { loading &&
+                    (
+                        <div className="absolute z-10 top-10 left-5">
+                            <PacmanLoader color="#7a0e95" />
+                        </div> ) }
             </form>
+            
         </div>
     );
 }
