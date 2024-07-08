@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth';
 
 const HomePage = () =>
 {
+  console.log( { React } );
   const { auth } = useAuth();
 
   return (

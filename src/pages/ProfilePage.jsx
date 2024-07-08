@@ -3,6 +3,8 @@
 import React from 'react';
 import { SquareLoader } from "react-spinners";
 import { actions } from '../actions';
+import ProfileInfo from '../components/profile/ProfileInfo';
+import ProfilePost from '../components/profile/ProfilePost';
 import useAuth from '../hooks/useAuth';
 import useAxios from '../hooks/useAxios';
 import useProfile from '../hooks/useProfile';
@@ -11,7 +13,6 @@ const ProfilePage = () =>
 {
   const { api } = useAxios();
   const { auth } = useAuth();
-
   const { state, dispatch } = useProfile()
 
   // const [ user, setUser ] = React.useState( null );
@@ -66,12 +67,10 @@ const ProfilePage = () =>
   </div>
 
   return (
-    <div>
-      {
-      state?.user?.firstName
-      }
-      <p>{ state.posts.length }</p>
-    </div>
+    <main className="mx-auto max-w-[1020px] py-8">
+      <ProfileInfo />
+      <ProfilePost/>
+    </main>
   );
 };
 
