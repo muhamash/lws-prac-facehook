@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { actions } from '../../actions';
 import FolderChecked from '../../assets/folder.png';
 import Edit from '../../assets/icons/edit.svg';
 import useAxios from '../../hooks/useAxios';
@@ -8,14 +9,29 @@ import useProfile from '../../hooks/useProfile';
 
 const Bio = () =>
 {
-    const { state } = useProfile();
+    const { state, dispatch } = useProfile();
     const { api } = useAxios();
     const [ bio, setBio ] = React.useState( state?.user?.bio );
     const [ edit, setEdit ] = React.useState( false )
     
-    const handleBio = () =>
+    const handleBio = async() =>
     {
-        setEdit(false)
+        dispatch( { type: actions.profile.PROFILE_DATA_FETCHING } );
+
+        try
+        {
+            const response = await api.patch( `http://localhost:3000/profile/${state?.user?.id}`, { bio } );
+            if ( response.status === 200 )
+            {
+                dispatch( { type: actions.profile.USER_DATA_EDIT, data: response.data } );
+            }
+            setEdit(false)
+        }
+        catch ( error )
+        {
+            console.log( error );
+        }
+        
     }
 
     return (
