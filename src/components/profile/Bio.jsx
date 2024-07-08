@@ -39,31 +39,31 @@ const Bio = () =>
     return (
         <div className="mt-4 flex items-start gap-2 lg:mt-6">
             <div className="relative">
-                <div className={`${loading ? ('flex-1 z-0 opacity-50 blur-sm'): 'flex-1'}`}>
+                <div className={ `${loading ? ( 'flex-1 z-0 opacity-50 blur-sm' ) : 'flex-1'}` }>
                     { !edit ? (
-                    <p className="leading-[188%] text-gray-400 lg:text-lg">
-                        { bio }
-                    </p>
-                ) : (
-                    <textarea
-                        className="text-black"
-                        value={ bio }
-                        cols={ 55 }
-                        rows={ 4 }
-                        onChange={ ( e ) => setBio( e.target.value ) }
-                    />
-                ) }
+                        <p className="leading-[188%] text-gray-400 lg:text-lg">
+                            { bio }
+                        </p>
+                    ) : (
+                        <textarea
+                            className="text-black"
+                            value={ bio }
+                            cols={ 55 }
+                            rows={ 4 }
+                            onChange={ ( e ) => setBio( e.target.value ) }
+                        />
+                    ) }
                 </div>
                 {
                     loading && (
-                <div className="absolute z-10 bottom-[40%] left-[50%]">
-                    <ScaleLoader
-                        color="#841492"
-                        height={ 25 }
-                        width={ 8 }
-                    />
-                </div>
-            )
+                        <div className="absolute z-10 bottom-[40%] left-[50%]">
+                            <ScaleLoader
+                                color="#841492"
+                                height={ 25 }
+                                width={ 8 }
+                            />
+                        </div>
+                    )
                 }
             </div>
             { !edit ? (
