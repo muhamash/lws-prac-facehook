@@ -4,6 +4,7 @@
 import ThreeDot from '../../assets/icons/3dots.svg';
 import Delete from '../../assets/icons/delete.svg';
 import Edit from '../../assets/icons/edit.svg';
+import Time from '../../assets/icons/time.svg';
 import { getPostTime } from "../../utils";
 
 export default function PostHeader({post}) {
@@ -19,9 +20,9 @@ export default function PostHeader({post}) {
               <div>
                   <h6 className="text-lg lg:text-xl">{ post?.author?.name }</h6>
                 <div className="flex items-center gap-1.5">
-                  <img src="./assets/icons/time.svg" alt="time" />
+                  <img src={Time} alt="time" />
                   <span className="text-sm text-gray-400 lg:text-base"
-                      >{ getPostTime(post?.createAt) }</span>
+                      >{ getPostTime(post?.createAt)} ago</span>
                 </div>
               </div>
             </div>
