@@ -8,7 +8,7 @@ export const useAvatar = ( post ) =>
 
     const avatar = isMe ? `${state?.user?.avatar}` : `${post?.author?.avatar}`;
     const avatarUrl = `http://localhost:3000/${avatar}`;
-    console.log( avatarUrl );
+    // console.log( avatarUrl );
     
     return avatarUrl;
 }
