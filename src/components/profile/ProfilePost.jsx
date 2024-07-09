@@ -12,8 +12,8 @@ export default function ProfilePost({post}) {
     <article className="card mt-6 lg:mt-8">
       <PostHeader post={ post } />
       <PostBody post={ post } />
-      <PostAction />
-      <PostComment/>
+      <PostAction post={post}/>
+      <PostComment post={ post } />
     </article>
   )
 }
