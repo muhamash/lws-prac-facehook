@@ -5,16 +5,19 @@ import ThreeDot from '../../assets/icons/3dots.svg';
 import Delete from '../../assets/icons/delete.svg';
 import Edit from '../../assets/icons/edit.svg';
 import Time from '../../assets/icons/time.svg';
+import { useAvatar } from '../../hooks/useAvatar';
 import { getPostTime } from "../../utils";
 
-export default function PostHeader({post}) {
+export default function PostHeader ( { post } )
+{
+    const avatar = useAvatar( post );
   return (
     <header className="flex items-center justify-between gap-4">
             {/* <!-- author info --> */}
             <div className="flex items-center gap-3">
               <img
                 className="max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px]"
-                src="./assets/images/avatars/avatar_1.png"
+                src={avatar}
                 alt="avatar"
               />
               <div>
