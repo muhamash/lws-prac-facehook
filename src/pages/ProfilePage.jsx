@@ -26,6 +26,7 @@ const ProfilePage = () =>
         const response = await api.get( `http://localhost:3000/profile/${auth?.user?.id}` );
         if ( response.status === 200 )
         {
+          console.log(response.data)
           dispatch( {
             type: actions.profile.PROFILE_DATA_FETCHED,
             data: response.data,
@@ -48,7 +49,13 @@ const ProfilePage = () =>
   return (
     <main className="mx-auto max-w-[1020px] py-8">
       <ProfileInfo />
-      <ProfilePost />
+      
+      <h4 className="text-left mt-6 text-xl lg:mt-8 lg:text-2xl">Your Posts</h4>
+      {
+        state?.posts?.map( ( post ) => (
+          <ProfilePost key={ post.id } post={ post } />
+        ))
+      }
     </main>
   );
 };
