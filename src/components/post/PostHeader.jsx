@@ -10,16 +10,17 @@ import { getPostTime } from "../../utils";
 
 export default function PostHeader ( { post } )
 {
-    const avatar = useAvatar( post );
+    const avatar = useAvatar(post)
     const [ show, setShow ] = React.useState( false );
 
+    // console.log(avatar, `http://localhost:3000/${post.author.avatar}`)
     return (
         <header className="flex items-center justify-between gap-4">
             {/* <!-- author info --> */ }
             <div className="flex items-center gap-3">
                 <img
                     className="max-w-10 max-h-10 rounded-full lg:max-h-[58px] lg:max-w-[58px]"
-                    src={ avatar }
+                    src={avatar}
                     alt="avatar"
                 />
                 <div>

@@ -11,7 +11,6 @@ export const useAvatarUrls = (comments) => {
 
 export default function CommentList({ comments }) {
     const avatars = useAvatarUrls( comments );
-    console.log(avatars)
 
     return (
         <>

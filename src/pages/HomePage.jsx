@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Link } from "react-router-dom";
 import { actions } from '../actions';
-import ProfilePost from '../components/profile/ProfilePost';
+import PostList from '../components/post/PostList';
 import useAxios from "../hooks/useAxios";
 import { initialState, PostReducer } from '../reducers/PostReducer';
 
@@ -52,14 +51,7 @@ const HomePage = () =>
 
   return (
     <div className="w-full">
-      {
-        state?.posts?.map( ( post ) => (
-          <ProfilePost key={ post.id } post={ post } />
-        ))
-      }
-      <Link to="/profile">
-        profile
-      </Link>
+      <PostList posts={ state.posts } />
     </div>
   )
 }

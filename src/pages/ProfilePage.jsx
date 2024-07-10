@@ -3,8 +3,8 @@
 import React from 'react';
 import { SquareLoader } from "react-spinners";
 import { actions } from '../actions';
+import PostList from '../components/post/PostList';
 import ProfileInfo from '../components/profile/ProfileInfo';
-import ProfilePost from '../components/profile/ProfilePost';
 import useAuth from '../hooks/useAuth';
 import useAxios from '../hooks/useAxios';
 import useProfile from '../hooks/useProfile';
@@ -51,11 +51,7 @@ const ProfilePage = () =>
       <ProfileInfo />
       
       <h4 className="text-left mt-6 text-xl lg:mt-8 lg:text-2xl">Your Posts</h4>
-      {
-        state?.posts?.map( ( post ) => (
-          <ProfilePost key={ post.id } post={ post } />
-        ))
-      }
+      <PostList posts={state.posts}/>
     </main>
   );
 };
