@@ -129,9 +129,7 @@
           }
         }
       ],
-      "likes": [
-        "6fd3ed42-2275-4d5f-a436-e5a3bf586c56"
-      ],
+      "likes": [],
       "createAt": "2024-02-24T12:18:21.686Z"
     },
     {
@@ -209,7 +207,8 @@
       "likes": [
         "ea168626-058e-49dd-b23c-3000e7bd0172",
         "8fc0f0d6-396a-4ef4-922b-27ef5b4e8526",
-        "1aeef0f0-77ba-456b-8b5b-d4145a9b5410"
+        "1aeef0f0-77ba-456b-8b5b-d4145a9b5410",
+        "6fd3ed42-2275-4d5f-a436-e5a3bf586c56"
       ],
       "createAt": "2024-02-09T12:19:50.876Z"
     },
@@ -232,6 +231,16 @@
             "id": "6fd3ed42-2275-4d5f-a436-e5a3bf586c56",
             "name": "Saad Hasan",
             "avatar": "uploads/avatar/avatar-1708789609571-36760872.jpeg"
+          }
+        },
+        {
+          "id": "5e6706d2-552d-4505-8e7d-a953a15eae06",
+          "comment": "new comment",
+          "createdAt": "2024-07-10T21:59:12.091Z",
+          "author": {
+            "id": "6fd3ed42-2275-4d5f-a436-e5a3bf586c56",
+            "name": "Saad Hasan",
+            "avatar": "uploads/avatar/avatar-1720643507888-290423521.jpeg"
           }
         }
       ],
@@ -268,7 +277,18 @@
         "name": "Tapas Adhikary",
         "avatar": "uploads/avatar/avatar-1708770640883-148182382.png"
       },
-      "comments": [],
+      "comments": [
+        {
+          "id": "7ec7dfde-7f0a-4630-8bf5-52ca284e6ea9",
+          "comment": "oka",
+          "createdAt": "2024-07-10T22:01:13.510Z",
+          "author": {
+            "id": "6fd3ed42-2275-4d5f-a436-e5a3bf586c56",
+            "name": "Saad Hasan",
+            "avatar": "uploads/avatar/avatar-1720643507888-290423521.jpeg"
+          }
+        }
+      ],
       "likes": [],
       "createAt": "2024-02-24T12:31:17.794Z"
     },
