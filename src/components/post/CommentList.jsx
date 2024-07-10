@@ -10,12 +10,13 @@ export const useAvatarUrls = (comments) => {
 };
 
 export default function CommentList({ comments }) {
-    const avatars = useAvatarUrls(comments);
+    const avatars = useAvatarUrls( comments );
+    console.log(avatars)
 
     return (
         <>
             {
-                comments && comments.map((comment, index) => (
+                comments.length !== 0 ? (comments.map((comment, index) => (
                     <div key={index} className="space-y-4 divide-y divide-lighterDark pl-2 lg:pl-3">
                         <div className="flex items-center gap-3 pt-4">
                             <img
@@ -31,7 +32,8 @@ export default function CommentList({ comments }) {
                             </div>
                         </div>
                     </div>
-                ))
+                ) ) ) :
+                    (<p className="text-violet-600">No comments for the post!</p>)
             }
         </>
     );
