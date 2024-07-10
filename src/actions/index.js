@@ -8,4 +8,13 @@ export const actions = {
         IMAGE_UPDATED: "IMAGE_UPDATED",
     },
 
+    post: {
+        POST_DATA_FETCHED: "POST_DATA_FETCHED",
+        POST_DATA_FETCHING: "POST_DATA_FETCHING",
+        DATA_FETCH_ERROR: "DATA_FETCH_ERROR",
+        // USER_DATA_FETCH: "USER_DATA_FETCH",
+        // USER_DATA_EDIT: "USER_DATA_EDIT",
+        // IMAGE_UPDATED: "IMAGE_UPDATED",
+    },
+
 }
