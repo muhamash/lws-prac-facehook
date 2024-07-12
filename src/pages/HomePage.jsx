@@ -2,14 +2,16 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { actions } from '../actions';
+import NewPost from '../components/post/NewPost';
 import PostList from '../components/post/PostList';
 import useAxios from "../hooks/useAxios";
+import usePost from '../hooks/usePost';
 import { initialState, PostReducer } from '../reducers/PostReducer';
 
 const HomePage = () =>
 {
   // console.log( { React } );
-  const [ state, dispatch ] = React.useReducer( PostReducer, initialState );
+  const {state, dispatch } = usePost( PostReducer, initialState );
   // const { auth } = useAuth();
   const { api } = useAxios();
 
@@ -51,6 +53,7 @@ const HomePage = () =>
 
   return (
     <div className="w-full">
+      <NewPost/>
       <PostList posts={ state.posts } />
     </div>
   )

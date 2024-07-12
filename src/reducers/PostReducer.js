@@ -33,6 +33,14 @@ const PostReducer = ( state, action ) =>
             }
                 
         }
+        case actions.post.POST_CREATED: {
+            return {
+                ...state,
+                loading: false,
+                posts: action.data,
+            }
+                
+        }
         default: {
             return state;
         }

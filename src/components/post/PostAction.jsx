@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import Comment from '../../assets/icons/comment.svg';
 import Like from '../../assets/icons/like.svg';
 import setLikeI from '../../assets/icons/notification.svg';
 import Share from '../../assets/icons/share.svg';
